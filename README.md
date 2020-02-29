@@ -2,7 +2,6 @@
 This is a Python Script to accumulate stock prices of multiple companies by minutes.
 
 <b>Problem Statement:</b>
-
 I was trying to build a sequence model to predict stock price of a company, when I began searching for data I realized that the online APIs such as Yahoo Finance & Google Finance allow for only upto 30 days previous minute level data at a maximum. Therefore if I were to use one of these APIs my data would be only constrained to 30 days and this was a very small amount of data to build a sequence model and the resulting model would be far from robust. Alternative was to manually update the datase daily or weekly atleast which was a very tedious task.
 
 <b>Solution:</b>
