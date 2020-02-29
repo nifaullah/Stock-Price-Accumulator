@@ -9,8 +9,8 @@ Created on Sat Feb 29 18:01:56 2020
 import StockPriceByMinute as sm
 
 
-_path = "C:/Users/nifaullah/Downloads/msba/WinBreak/DLA/StockData"
-_filepath = f"{_path}/StockData.xlsx"
-_companies = ["MSFT", "AAPL", "GOOG", "FB", "TWTR"]
+_path = "" # Provide local path
+_filepath = f"{_path}/StockData.xlsx" # Change filename if you want
+_companies = ["MSFT", "AAPL", "GOOG", "FB", "TWTR"] # Add or remove companies as per your requiremen
 
-df = sm.Build(_companies)
+sm.Build(_companies, _filepath)
