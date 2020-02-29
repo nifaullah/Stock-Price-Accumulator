@@ -8,7 +8,7 @@ I was trying to build a sequence model to predict stock price of a company, when
 Inorder to tackle the above issue I wrote a python script which would automatically collect the data daily for the listed companies after end of each trading day, process it and save it to the local.
 
 <b>Challenges:</b>
-The major challenge was the pivot table we would get from Yahoo Finance API. I unpivoted the table and rectified the column names. Another challenge was at given point you can only request for 7 days of data, so this had to be managed approriately by dynamically making calls as required.
+The major challenge was the pivot table we would get from Yahoo Finance API if data for multiple companies were requested. I unpivoted the table and rectified the column names. Another challenge was at given point you can only request for 7 days of data, so this had to be managed approriately by dynamically making calls as required.
 
 <b>Scope:</b>
 Currently the function returns only the Close & the Volume column but one can easily add columns if they want by modifying the code. Further I have restricted last update to previous day so that we have full clean data upto that particular day instead of live update. If one contines to accumulate data for next 30 working days he/she would have added 11700 rows to the original dataset. Although the process of collecting data may seem slower for someone who wants to start working instantly on the dataset, but the alternative is he/she has to work on either 30 days of data or bets that someone is accumulating minute level data for their preferred company.
