@@ -29,3 +29,4 @@ Scalability - Right now up to 10 companies data can be easily collected & mainta
 
 <b>Citations:</b>
 1. This code was developed using Spyder IDE
+2. Publicly available <a href="https://github.com/ranaroussi/yfinance">Yahoo Finance API</a> is used to accumulate the data.
