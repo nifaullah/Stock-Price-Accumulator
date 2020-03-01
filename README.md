@@ -13,8 +13,7 @@ The major challenge was the pivot table we would get from Yahoo Finance API if d
 <b>Scope:</b>
 Currently the function returns only the Close & the Volume column but one can easily add columns if they want by modifying the code. Further I have restricted last update to previous day so that we have full clean data upto that particular day instead of live update. If one contines to accumulate data for next 30 working days he/she would have added 11700 rows to the original dataset. Although the process of collecting data may seem slower for someone who wants to start working instantly on the dataset, but the alternative is he/she has to work on either 30 days of data or bets that someone is accumulating minute level data for their preferred company.
 
-<b>Potential Issues</b>
-Scalability - Right now up to 10 companies data can be easily collected & maintained, it is possible that it may work  for more than 10 companies also but over a period of time I am not sure if it'll work smoothly. Further if the number of companies are large may be we can call the program twice separately for each list of companies.
+<b>Potential Issues</b> Currently up to 10 companies data can be easily collected & maintained, it is possible that it may work smoothly  for more than 10 companies also but over a period of time I am not sure if it'll work smoothly. Further if the number of companies are large may be one can call the program twice separately for each list of companies.
 
 <b>How to use:</b>
 1. Download or copy create both py files and make sure they're in the same directory.
