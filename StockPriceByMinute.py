@@ -76,16 +76,29 @@ def Build(companies, filepath=""):
         last_date = results_df.last(_no_of_days).index[len(results_df.last(_no_of_days).index)-1].date()
         diff = (current_date - last_date).days
         if (last_date != current_date) & (diff <= _max_past_days_allowed):
-            startDate = end_date
+            start_date = last_date +  timedelta(days = 1)
     
     # Loading Data from Yahoo Finance API
     # Looping as API allows only 7 days of data retrieval in one call
     # Further API allows upto 30 days of past data with 1 minute interval
     is_diff_positive = is_file_changed = (last_date != current_date)
     while is_diff_positive:
+        #Dealing with scenario if our request only has weekend 
+        #would be only executed at the very last iteration
+        _local_diff = abs((end_date - start_date).days)
+        if _local_diff < 3:
+            is_all_holidays = False
+            _date = start_date
+            while _date != end_date:
+                if _date.weekday() not in [5,6]:
+                    is_all_holidays = False
+                    break
+                is_all_holidays = True
+                _date = _date + timedelta(days = 1)
+            if is_all_holidays:
+                break
         df = yf.download(companies, start=start_date.strftime(_date_format), end = end_date.strftime(_date_format), interval = _interval)
         df = FixColumnNames(df[close_label], close_addon_label, single).join(FixColumnNames(df[volume_label], volume_addon_label, single))
-        df.index = df.index.tz_localize(None)
         results_df = pd.concat([results_df,df])
         if diff < _max_days_allowed_per_call:
             is_diff_positive = False
@@ -102,6 +115,5 @@ def Build(companies, filepath=""):
     # Save only if original file is changed & if a filepath is provided
     if is_file_changed and (filepath):
         results_df.to_excel(filepath)
-        return
         
     return results_df
